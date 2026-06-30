@@ -50,15 +50,9 @@ final class Pipeline
     private function analyzeWithProfile(string $text, LanguageProfile $profile): array
     {
         $normalization = new NormalizationPipeline($profile->normalizers());
-        $normalized = $normalization->normalize($text);
-        $compact = $normalization->compact($text);
-
         $matcher = new Matcher($profile->dictionary(), $profile->code(), $normalization);
 
-        return [
-            ...$matcher->matchWordLevel($text, $normalized),
-            ...$matcher->matchCompact($text, $normalized, $compact),
-        ];
+        return $matcher->match($text);
     }
 
     /**
