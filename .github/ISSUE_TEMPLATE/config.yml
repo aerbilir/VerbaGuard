@@ -4,5 +4,5 @@ contact_links:
     url: https://github.com/aerbilir/VerbaGuard/blob/main/SECURITY.md
     about: Report security vulnerabilities privately
   - name: Questions
-    url: https://github.com/aerbilir/VerbaGuard/discussions
-    about: Ask questions and discuss ideas
+    url: https://github.com/aerbilir/VerbaGuard/issues/new?template=feature_request.yml
+    about: Open an issue for questions or feature ideas

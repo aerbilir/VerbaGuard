@@ -52,6 +52,14 @@ When ready for Packagist:
 2. Submit `verbaguard/verbaguard` to [Packagist](https://packagist.org/)
 3. Enable GitHub webhook for auto-update on tag push
 
+## Post-Public Repository Setup
+
+After making the repository public, complete these manual steps in GitHub Settings:
+
+1. **Enable Discussions** (optional) — Settings → General → Features → Discussions. If enabled, you may add a Discussions contact link to `.github/ISSUE_TEMPLATE/config.yml`.
+2. **Import labels** — see [Labels](#labels) below.
+3. **Add topics** — see [GitHub Topics](#github-topics) below.
+
 ## GitHub Topics
 
 After making the repository public, add these topics in repository settings:
