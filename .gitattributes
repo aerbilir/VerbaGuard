@@ -1,0 +1,10 @@
+* text=auto eol=lf
+
+*.php diff=php linguist-language=PHP
+*.md linguist-documentation
+data/* linguist-generated=false
+
+/.github export-ignore
+/tests export-ignore
+/.cursor export-ignore
+/graphify-out export-ignore

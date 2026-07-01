@@ -3,15 +3,32 @@
     "description": "Framework-independent PHP reference implementation for language-aware text moderation",
     "type": "library",
     "license": "MIT",
-    "keywords": ["profanity", "moderation", "text-filter", "turkish", "language-aware"],
+    "keywords": [
+        "profanity",
+        "moderation",
+        "text-filter",
+        "text-moderation",
+        "content-moderation",
+        "turkish",
+        "language-aware",
+        "php"
+    ],
+    "homepage": "https://github.com/aerbilir/VerbaGuard",
     "authors": [
         {
             "name": "VerbaGuard Contributors"
         }
     ],
+    "support": {
+        "issues": "https://github.com/aerbilir/VerbaGuard/issues",
+        "source": "https://github.com/aerbilir/VerbaGuard"
+    },
     "require": {
         "php": "^8.2",
         "ext-mbstring": "*"
+    },
+    "suggest": {
+        "ext-intl": "Enables Unicode NFC normalization for more consistent matching"
     },
     "require-dev": {
         "pestphp/pest": "^3.0"
@@ -35,5 +52,13 @@
     "scripts": {
         "test": "pest"
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "archive": {
+        "exclude": [
+            "/.github",
+            "/tests",
+            "/.cursor",
+            "/graphify-out"
+        ]
+    }
 }

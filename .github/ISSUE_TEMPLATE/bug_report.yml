@@ -1,0 +1,52 @@
+name: Bug Report
+description: Report incorrect matching, masking, or scoring behavior
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug. Please include a minimal reproduction.
+        For security issues, see [SECURITY.md](../../SECURITY.md) instead.
+
+  - type: input
+    id: php-version
+    attributes:
+      label: PHP version
+      placeholder: "8.3.0"
+    validations:
+      required: true
+
+  - type: textarea
+    id: input-text
+    attributes:
+      label: Input text
+      description: The text passed to VerbaGuard (redact personal data if needed)
+      placeholder: "bu bir amk test"
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      placeholder: "contains() should return false"
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      placeholder: "contains() returns true, matches term 'mal'"
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: PHP snippet or test case if available
+      render: php
+    validations:
+      required: false

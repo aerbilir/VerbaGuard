@@ -1,0 +1,45 @@
+name: Feature Request
+description: Suggest an enhancement (not for matcher redesign while frozen)
+title: "[Feature]: "
+labels: ["enhancement", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        VerbaGuard prioritizes correctness over new features.
+        The matcher is currently frozen — matching strategy changes require a separate design discussion.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What problem does this solve?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: How would you like it to work?
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope check
+      options:
+        - label: This does not require changing the frozen matcher
+          required: false
+        - label: This does not add runtime Composer dependencies
+          required: false
+        - label: This does not break the public API
+          required: false
