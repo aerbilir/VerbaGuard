@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Turkish quality corpus fixtures under `tests/Fixtures/tr/` (60 cases: 30 clean, 10 profane, 10 obfuscated, 10 edge)
+- `CorpusLoader` and `CorpusQualityReport` support classes for fixture validation and quality metrics
+- `tests/TurkishCorpusQualityTest.php` with aggregate FP/FN/coverage gate
+- `docs/dictionary-expansion-policy.md` — criteria for future Turkish dictionary entry PRs
+
+### Changed
+
+- `CONTRIBUTING.md` — corpus authoring rules and dictionary expansion policy link
+
 ## [0.2.0] - 2026-07-03
 
 Dictionary infrastructure release — author-only dictionary rows with build-time normalized key generation.
