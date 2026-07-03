@@ -178,12 +178,15 @@ Use `VerbaGuard::forLanguages()` with a custom profile when you need a productio
 
 ## Language Profiles
 
-A language profile bundles a dictionary and profile-specific normalizers:
+A language profile bundles a dictionary and profile-specific normalizers.
+
+**v0.2 dictionary authoring:** write only `term`, `category`, and `severity` in dictionary rows. Do not author `normalized` — it is derived at build time via `Dictionary::fromRows()` and a `normalizeKey` callable that must match the profile's runtime normalization chain.
 
 ```php
 use VerbaGuard\Contracts\LanguageProfile;
 use VerbaGuard\Dictionary\Dictionary;
 use VerbaGuard\Normalizer\Normalizer;
+use VerbaGuard\Pipeline\NormalizationPipeline;
 use VerbaGuard\VerbaGuard;
 
 final class ExampleProfile implements LanguageProfile
@@ -195,14 +198,20 @@ final class ExampleProfile implements LanguageProfile
 
     public function dictionary(): Dictionary
     {
-        return Dictionary::fromArray([
+        $rows = [
             [
                 'term' => 'badword',
-                'normalized' => 'badword',
                 'category' => 'profanity',
                 'severity' => 'medium',
             ],
-        ]);
+        ];
+
+        $normalization = new NormalizationPipeline($this->normalizers());
+
+        return Dictionary::fromRows(
+            $rows,
+            static fn (string $term): string => $normalization->normalize($term),
+        );
     }
 
     public function normalizers(): array

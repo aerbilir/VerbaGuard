@@ -8,6 +8,7 @@ use VerbaGuard\Contracts\LanguageProfile;
 use VerbaGuard\Dictionary\Dictionary;
 use VerbaGuard\Normalizer\Normalizer;
 use VerbaGuard\Normalizer\TurkishNormalizer;
+use VerbaGuard\Pipeline\NormalizationPipeline;
 
 final class TurkishProfile implements LanguageProfile
 {
@@ -21,9 +22,13 @@ final class TurkishProfile implements LanguageProfile
     public function dictionary(): Dictionary
     {
         if ($this->dictionary === null) {
-            /** @var list<array{term: string, normalized: string, category: string, severity: string}> $rows */
+            /** @var list<array{term: string, category: string, severity: string}> $rows */
             $rows = require dirname(__DIR__, 2) . '/data/tr.php';
-            $this->dictionary = Dictionary::fromArray($rows);
+            $normalization = new NormalizationPipeline($this->normalizers());
+            $this->dictionary = Dictionary::fromRows(
+                $rows,
+                static fn (string $term): string => $normalization->normalize($term),
+            );
         }
 
         return $this->dictionary;
