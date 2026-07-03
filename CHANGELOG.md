@@ -7,28 +7,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-07-03
+
+Dictionary infrastructure release — author-only dictionary rows with build-time normalized key generation.
+
 ### Added
 
 - `DictionaryBuilder` for build-time dictionary construction with `normalizeKey` injection
+- Build-time normalized key generation: lookup keys are derived from `term` via `normalizeKey` at dictionary build time
 - `Dictionary::fromRows()` as the canonical dictionary factory
-- `tests/DictionaryTest.php` unit tests for dictionary authoring and validation
+- Author-only dictionary format: each row contains `term`, `category`, and `severity` only
+- `tests/DictionaryTest.php` unit tests for dictionary authoring and validation (12 tests)
 
 ### Changed
 
-- Dictionary author format is now `term`, `category`, and `severity` only; `normalized` is derived at build time
 - `Entry::fromRow()` replaces `Entry::fromArray()` for internal row construction
-- `data/tr.php` seed dictionary migrated to author-only rows
+- Turkish seed dictionary (`data/tr.php`) migrated to author-only format
 - `TurkishProfile` builds its dictionary via `NormalizationPipeline` so index keys match runtime normalization
+- `docs/specification.md` and `README.md` updated for v0.2 dictionary authoring
 
 ### Removed
 
 - `Dictionary::fromArray()` — use `Dictionary::fromRows($rows, $normalizeKey)` instead
 - `Entry::fromArray()`
 
-### Breaking changes (v0.2)
+### Breaking changes
 
-- `Dictionary::fromArray()` removed; custom profiles must use `Dictionary::fromRows()` with a `normalizeKey` callable
-- Author dictionary rows no longer accept a `normalized` field
+- `Dictionary::fromArray()` removed; custom `LanguageProfile` implementations must use `Dictionary::fromRows()` with a `normalizeKey` callable
+- Author dictionary rows no longer accept a `normalized` field; including it throws `InvalidArgumentException` at build time
 
 ## [0.1.0] - 2026-07-01
 
@@ -51,5 +57,6 @@ Initial public release of VerbaGuard — a framework-independent PHP moderation 
 - Specification aligned with matcher v2.2 behavior
 - README expanded for public release
 
-[Unreleased]: https://github.com/aerbilir/VerbaGuard/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/aerbilir/VerbaGuard/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/aerbilir/VerbaGuard/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/aerbilir/VerbaGuard/releases/tag/v0.1.0
