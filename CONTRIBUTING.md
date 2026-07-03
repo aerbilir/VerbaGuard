@@ -60,6 +60,37 @@ ci: add PHP 8.3 to test matrix
 - False-positive regression tests are as important as true-positive tests
 - Prefer simple, readable code over abstractions
 
+## Turkish Dictionary Quality Corpus
+
+VerbaGuard maintains a fixture-based Turkish quality corpus under `tests/Fixtures/tr/`.
+
+- **Clean corpus** — false-positive candidates (`expect.detected: false`)
+- **Profane / obfuscated corpus** — detection cases (`expect.detected: true`)
+- **Edge cases** — boundary behavior with explicit expectations
+
+Quality gate (CI): false positives = 0, false negatives = 0, detection coverage = 100%.
+
+### Adding corpus cases
+
+1. Use stable `id` values (`category.slug`) unique across all fixture files.
+2. Required fields: `id`, `text`, `expect.detected`.
+3. Set `expect.terms` to seed dictionary terms only when asserting canonical matches.
+4. Empty `text` is allowed only in `edge_cases.php`.
+5. Run `composer test` — `TurkishCorpusQualityTest` must pass.
+
+### Dictionary expansion PRs
+
+Before adding Turkish dictionary entries, read [docs/dictionary-expansion-policy.md](docs/dictionary-expansion-policy.md).
+
+New TR entry PRs **must** include:
+
+- Clean neighbor cases (false-positive documentation)
+- Profane and obfuscated positive cases
+- A risk assessment in the PR description
+- Passing aggregate corpus gate (FP = 0)
+
+Do not add dictionary entries without corresponding corpus coverage.
+
 ## Reporting Bugs
 
 Use the [bug report issue template](.github/ISSUE_TEMPLATE/bug_report.yml). Include:
