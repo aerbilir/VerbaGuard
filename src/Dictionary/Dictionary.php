@@ -20,16 +20,11 @@ final class Dictionary
     }
 
     /**
-     * @param list<array{term: string, normalized: string, category: string, severity: string}> $rows
+     * @param list<array{term: string, category: string, severity: string}> $rows
      */
-    public static function fromArray(array $rows): self
+    public static function fromRows(array $rows, callable $normalizeKey): self
     {
-        $entries = array_map(
-            static fn (array $row): Entry => Entry::fromArray($row),
-            $rows,
-        );
-
-        return new self($entries);
+        return (new DictionaryBuilder($normalizeKey))->build($rows);
     }
 
     public function find(string $normalized): ?Entry

@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- `DictionaryBuilder` for build-time dictionary construction with `normalizeKey` injection
+- `Dictionary::fromRows()` as the canonical dictionary factory
+- `tests/DictionaryTest.php` unit tests for dictionary authoring and validation
+
+### Changed
+
+- Dictionary author format is now `term`, `category`, and `severity` only; `normalized` is derived at build time
+- `Entry::fromRow()` replaces `Entry::fromArray()` for internal row construction
+- `data/tr.php` seed dictionary migrated to author-only rows
+- `TurkishProfile` builds its dictionary via `NormalizationPipeline` so index keys match runtime normalization
+
+### Removed
+
+- `Dictionary::fromArray()` — use `Dictionary::fromRows($rows, $normalizeKey)` instead
+- `Entry::fromArray()`
+
+### Breaking changes (v0.2)
+
+- `Dictionary::fromArray()` removed; custom profiles must use `Dictionary::fromRows()` with a `normalizeKey` callable
+- Author dictionary rows no longer accept a `normalized` field
+
 ## [0.1.0] - 2026-07-01
 
 Initial public release of VerbaGuard — a framework-independent PHP moderation engine for language-aware text analysis.

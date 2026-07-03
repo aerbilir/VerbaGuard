@@ -6,6 +6,12 @@ namespace VerbaGuard\Dictionary;
 
 final class Entry
 {
+    /**
+     * @param string $term Author field — canonical dictionary term.
+     * @param string $normalized Derived field — build-time normalized lookup key.
+     * @param string $category Author field — semantic category.
+     * @param string $severity Author field — one of clean, low, medium, high.
+     */
     public function __construct(
         public readonly string $term,
         public readonly string $normalized,
@@ -15,15 +21,15 @@ final class Entry
     }
 
     /**
-     * @param array{term: string, normalized: string, category: string, severity: string} $data
+     * @param array{term: string, category: string, severity: string} $row
      */
-    public static function fromArray(array $data): self
+    public static function fromRow(array $row, string $normalized): self
     {
         return new self(
-            $data['term'],
-            $data['normalized'],
-            $data['category'],
-            $data['severity'],
+            $row['term'],
+            $normalized,
+            $row['category'],
+            $row['severity'],
         );
     }
 }

@@ -86,25 +86,54 @@ interface LanguageProfile
 
 Dictionaries are plain PHP arrays loaded from files such as `data/tr.php`.
 
-Each entry contains:
+### Author format (v0.2+)
 
-| Field        | Description                                      |
-|-------------|--------------------------------------------------|
-| `term`      | Canonical dictionary term                        |
-| `normalized`| Normalized form used for matching                |
-| `category`  | Semantic category, e.g. `profanity`, `insult`    |
-| `severity`  | One of `clean`, `low`, `medium`, `high`          |
+Each author row contains only user-written canonical fields:
 
-Example:
+| Field       | Description                                   |
+|------------|-----------------------------------------------|
+| `term`     | Canonical dictionary term                     |
+| `category` | Semantic category, e.g. `profanity`, `insult` |
+| `severity` | One of `clean`, `low`, `medium`, `high`       |
+
+Do **not** include `normalized` in author rows. It is derived at dictionary build time.
+
+Example author row:
 
 ```php
 [
     'term' => 'amk',
-    'normalized' => 'amk',
     'category' => 'profanity',
     'severity' => 'medium',
 ]
 ```
+
+### Build-time construction
+
+Use `Dictionary::fromRows()` with a `normalizeKey` callable. The callable must apply the same normalization chain the matcher uses at runtime (typically the profile's `NormalizationPipeline`).
+
+```php
+Dictionary::fromRows(
+    rows: $rows,
+    normalizeKey: fn (string $term): string => $normalization->normalize($term),
+);
+```
+
+At build time, each `term` is passed through `normalizeKey` to produce the derived `normalized` lookup key stored on `Entry`.
+
+### Runtime `Entry` fields
+
+| Field        | Source   | Description                                      |
+|-------------|----------|--------------------------------------------------|
+| `term`      | Author   | Canonical dictionary term                        |
+| `category`  | Author   | Semantic category                                |
+| `severity`  | Author   | Severity level                                   |
+| `normalized`| Derived  | Build-time normalized form used for matching     |
+
+### Breaking changes in v0.2
+
+- `Dictionary::fromArray()` removed — use `Dictionary::fromRows()` instead.
+- Author dictionary rows no longer accept a `normalized` field.
 
 ---
 
@@ -257,7 +286,8 @@ The final score is the sum of all unique match severities.
 ## Future compatibility notes
 
 - New normalization stages belong in the global pipeline unless language-specific.
-- Dictionary entries should remain array-based so existing language files keep working.
+- Dictionary author rows remain plain PHP arrays with `term`, `category`, and `severity`.
+- Derived fields such as `normalized` are produced at build time via `Dictionary::fromRows()`.
 - Additional severity levels or scoring policies require explicit interfaces in future versions.
 - Framework adapters should live in separate packages depending on this core library.
 - Matcher changes are bug-fix only while frozen; see `FOUNDATION.md`.
