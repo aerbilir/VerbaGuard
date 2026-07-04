@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `tests/TurkishCorpusQualityTest.php` with aggregate FP/FN/coverage gate
 - `docs/dictionary-expansion-policy.md` — criteria for future Turkish dictionary entry PRs
 - Inline Turkish lexicon taxonomy in `docs/dictionary-expansion-policy.md` — four supported categories (`profanity`, `insult`, `sexual`, `abbreviation`), severity guidance, Batch 1 acceptance policy, corpus requirements, and maintainer curation workflow
-- `docs/batch1-tr-lexicon-research.md` — Batch 1 Turkish lexicon research and curation document scaffold (structure only; research not yet performed)
+- `docs/batch1-tr-lexicon-research.md` — Batch 1 Turkish lexicon research and curation document (40-candidate pool, maintainer evaluation, 15 approved entries for PR 3)
 
 ### Changed
 
