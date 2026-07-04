@@ -93,7 +93,7 @@ Each author row contains only user-written canonical fields:
 | Field       | Description                                   |
 |------------|-----------------------------------------------|
 | `term`     | Canonical dictionary term                     |
-| `category` | Semantic category, e.g. `profanity`, `insult` |
+| `category` | Semantic category (see [Supported categories](#supported-dictionary-categories)) |
 | `severity` | One of `clean`, `low`, `medium`, `high`       |
 
 Do **not** include `normalized` in author rows. It is derived at dictionary build time.
@@ -134,6 +134,23 @@ At build time, each `term` is passed through `normalizeKey` to produce the deriv
 
 - `Dictionary::fromArray()` removed — use `Dictionary::fromRows()` instead.
 - Author dictionary rows no longer accept a `normalized` field.
+
+### Supported dictionary categories
+
+The `category` field is author-defined metadata carried on each dictionary entry. VerbaGuard v0.4 recognizes four supported categories for Turkish expansion:
+
+| Category | Description |
+|----------|-------------|
+| `profanity` | General profanity and vulgar slang |
+| `insult` | Personal degradation or attack on worth/competence |
+| `sexual` | Explicit sexual slang or sexual profanity |
+| `abbreviation` | High-confidence abbreviation of profanity or insult |
+
+Category definitions, severity guidance, false-positive risk notes, and expansion rules are documented in [`docs/dictionary-expansion-policy.md`](dictionary-expansion-policy.md).
+
+**Out of scope for v0.4:** the `slur` category. Slur moderation requires a separate ethical, cultural, and review policy and is not a supported category in current expansion work.
+
+A standalone taxonomy reference document is intentionally deferred until the Turkish dictionary reaches approximately 100 curated entries.
 
 ---
 

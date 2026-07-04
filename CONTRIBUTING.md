@@ -91,6 +91,29 @@ New TR entry PRs **must** include:
 
 Do not add dictionary entries without corresponding corpus coverage.
 
+### v0.4 Turkish lexicon expansion (three-PR workflow)
+
+Controlled Turkish dictionary expansion in v0.4 is split across three pull requests. Do not combine policy, research, and implementation in a single PR.
+
+| PR | Purpose | Changes allowed |
+|----|---------|-----------------|
+| **PR 1 — Documentation and policy** | Inline taxonomy, severity guidance, Batch 1 rules | Policy docs only — no dictionary or code changes |
+| **PR 2 — Research and curation** | Candidate pool, maintainer evaluation, Approved Batch 1 list | Research document only — no `data/tr.php` or fixture changes |
+| **PR 3 — Implementation** | Approved entries and corpus | `data/tr.php` + fixture corpus for exactly 15 approved entries |
+
+**Maintainer review is required.** PR 3 may only implement entries explicitly approved in PR 2 (Stage 3 — Approved Batch 1). Do not auto-generate dictionary rows from research output.
+
+**Corpus-first workflow.** Every approved entry must have a corpus plan before implementation. PR 3 must include clean neighbor, profane, and obfuscated cases per [docs/dictionary-expansion-policy.md](docs/dictionary-expansion-policy.md) before merge.
+
+**Offensive language in contributions.** Research and fixture PRs may reference offensive terms when necessary for moderation quality. Follow these expectations:
+
+- Summarize usage patterns — do not paste large blocks of raw user-generated content.
+- Fixture cases must be minimal, purposeful, and tied to detection or false-positive documentation.
+- Offensive fixture additions require maintainer review.
+- Do not scrape or store raw comment archives in the repository.
+
+See [docs/dictionary-expansion-policy.md](docs/dictionary-expansion-policy.md) for category taxonomy, Batch 1 acceptance criteria, and the three-stage curation workflow.
+
 ## Reporting Bugs
 
 Use the [bug report issue template](.github/ISSUE_TEMPLATE/bug_report.yml). Include:
