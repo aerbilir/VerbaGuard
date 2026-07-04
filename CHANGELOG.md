@@ -9,12 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Turkish quality corpus fixtures under `tests/Fixtures/tr/` (60 cases: 30 clean, 10 profane, 10 obfuscated, 10 edge)
+- Turkish quality corpus fixtures under `tests/Fixtures/tr/` (210 cases: 87 clean, 55 profane, 56 obfuscated, 12 edge)
 - `CorpusLoader` and `CorpusQualityReport` support classes for fixture validation and quality metrics
 - `tests/TurkishCorpusQualityTest.php` with aggregate FP/FN/coverage gate
 - `docs/dictionary-expansion-policy.md` — criteria for future Turkish dictionary entry PRs
 - Inline Turkish lexicon taxonomy in `docs/dictionary-expansion-policy.md` — four supported categories (`profanity`, `insult`, `sexual`, `abbreviation`), severity guidance, Batch 1 acceptance policy, corpus requirements, and maintainer curation workflow
 - `docs/batch1-tr-lexicon-research.md` — Batch 1 Turkish lexicon research and curation document (40-candidate pool, maintainer evaluation, 15 approved entries for PR 3)
+- Batch 1 Turkish dictionary expansion in `data/tr.php`: 15 new entries (`gerizekalı`, `dangalak`, `pezevenk`, `salak`, `kahpe`, `kaltak`, `sürtük`, `şerefsiz`, `gavat`, `dalyarak`, `andaval`, `yarrak`, `amcık`, `fahişe`, `sktr`) with matching corpus fixtures
 
 ### Changed
 
