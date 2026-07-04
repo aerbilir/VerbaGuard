@@ -34,12 +34,14 @@ This document covers **research and curation only**.
 
 Research was performed in four parallel agent reports (no additional web research in this curation step):
 
-| Report | Focus |
-|--------|--------|
-| [`docs/research/agent-1-gaming-chat.md`](research/agent-1-gaming-chat.md) | Gaming, Discord, Twitch, live-chat abbreviations and obfuscation |
-| [`docs/research/agent-2-general-internet.md`](research/agent-2-general-internet.md) | Forums, social media, general Turkish internet insult/profanity lanes |
-| [`docs/research/agent-3-fp-review.md`](research/agent-3-fp-review.md) | False-positive quality review (binding tie-break) |
-| [`docs/research/agent-4-normalization.md`](research/agent-4-normalization.md) | Normalized-key collision and variant mapping review |
+| Research input | Focus |
+|----------------|-------|
+| Agent 1 — gaming/chat research | Gaming, Discord, Twitch, live-chat abbreviations and obfuscation |
+| Agent 2 — general internet research | Forums, social media, general Turkish internet insult/profanity lanes |
+| Agent 3 — FP review | False-positive quality review (binding tie-break) |
+| Agent 4 — normalization review | Normalized-key collision and variant mapping review |
+
+The individual agent reports were temporary maintainer research artifacts. They are summarized here and are not intended to be committed as long-lived repository documents.
 
 ### Tie-break priority
 
@@ -416,10 +418,7 @@ PR 3 cannot start until all items below are satisfied:
 | Document | Purpose |
 |----------|---------|
 | [`docs/dictionary-expansion-policy.md`](dictionary-expansion-policy.md) | Taxonomy, Batch 1 rules, corpus requirements |
-| [`docs/research/agent-1-gaming-chat.md`](research/agent-1-gaming-chat.md) | Gaming & live-chat research |
-| [`docs/research/agent-2-general-internet.md`](research/agent-2-general-internet.md) | General internet research |
-| [`docs/research/agent-3-fp-review.md`](research/agent-3-fp-review.md) | False-positive quality review |
-| [`docs/research/agent-4-normalization.md`](research/agent-4-normalization.md) | Normalization variant research |
+| Internal agent research artifacts | Summarized research inputs for gaming/chat, general internet, false-positive review, and normalization review |
 | [`docs/specification.md`](specification.md) | Dictionary author format |
 | [`CONTRIBUTING.md`](../CONTRIBUTING.md) | Three-PR expansion workflow |
 | [`tests/Fixtures/tr/README.md`](../tests/Fixtures/tr/README.md) | Corpus fixture format |
