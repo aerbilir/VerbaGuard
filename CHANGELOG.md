@@ -7,21 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-07-04
+
+Turkish lexicon expansion release — quality corpus, dictionary expansion policy, Batch 1 curation, and 15 new dictionary entries. Matcher and public API unchanged; aggregate corpus quality gate passes with FP = 0, FN = 0, and 100% detection coverage.
+
 ### Added
 
-- Turkish quality corpus fixtures under `tests/Fixtures/tr/` (210 cases: 87 clean, 55 profane, 56 obfuscated, 12 edge)
+- Turkish quality corpus fixtures under `tests/Fixtures/tr/` (**210 cases**: 87 clean, 55 profane, 56 obfuscated, 12 edge)
 - `CorpusLoader` and `CorpusQualityReport` support classes for fixture validation and quality metrics
-- `tests/TurkishCorpusQualityTest.php` with aggregate FP/FN/coverage gate
-- `docs/dictionary-expansion-policy.md` — criteria for future Turkish dictionary entry PRs
-- Inline Turkish lexicon taxonomy in `docs/dictionary-expansion-policy.md` — four supported categories (`profanity`, `insult`, `sexual`, `abbreviation`), severity guidance, Batch 1 acceptance policy, corpus requirements, and maintainer curation workflow
-- `docs/batch1-tr-lexicon-research.md` — Batch 1 Turkish lexicon research and curation document (40-candidate pool, maintainer evaluation, 15 approved entries for PR 3)
-- Batch 1 Turkish dictionary expansion in `data/tr.php`: 15 new entries (`gerizekalı`, `dangalak`, `pezevenk`, `salak`, `kahpe`, `kaltak`, `sürtük`, `şerefsiz`, `gavat`, `dalyarak`, `andaval`, `yarrak`, `amcık`, `fahişe`, `sktr`) with matching corpus fixtures
+- `tests/TurkishCorpusQualityTest.php` with aggregate FP/FN/coverage gate (FP = 0, FN = 0, coverage = 100%)
+- `docs/dictionary-expansion-policy.md` — Turkish dictionary expansion policy, inline taxonomy, severity guidance, Batch 1 acceptance rules, and maintainer curation workflow
+- `docs/batch1-tr-lexicon-research.md` — Batch 1 Turkish lexicon research and curation (40-candidate pool, maintainer evaluation, 15 approved entries)
+- **15 new Turkish dictionary entries** in `data/tr.php` with matching corpus fixtures (`gerizekalı`, `dangalak`, `pezevenk`, `salak`, `kahpe`, `kaltak`, `sürtük`, `şerefsiz`, `gavat`, `dalyarak`, `andaval`, `yarrak`, `amcık`, `fahişe`, `sktr`); **final dictionary size: 20 entries** (5 seed + 15 Batch 1)
 
 ### Changed
 
 - `docs/dictionary-expansion-policy.md` — expanded with v0.4 three-PR workflow, inline taxonomy, severity guidance, Batch 1 rules, maintainer review stages, and explicit slur out-of-scope note
 - `docs/specification.md` — supported dictionary categories documented with link to expansion policy
 - `CONTRIBUTING.md` — v0.4 three-PR lexicon expansion workflow, offensive language contribution expectations, maintainer review requirements, and corpus-first workflow
+- `tests/Fixtures/tr/README.md` — `expect.terms` validation documented against full `data/tr.php` dictionary
 
 ## [0.2.0] - 2026-07-03
 
@@ -73,6 +77,7 @@ Initial public release of VerbaGuard — a framework-independent PHP moderation 
 - Specification aligned with matcher v2.2 behavior
 - README expanded for public release
 
-[Unreleased]: https://github.com/aerbilir/VerbaGuard/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/aerbilir/VerbaGuard/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/aerbilir/VerbaGuard/compare/v0.2.0...v0.4.0
 [0.2.0]: https://github.com/aerbilir/VerbaGuard/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/aerbilir/VerbaGuard/releases/tag/v0.1.0
