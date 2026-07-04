@@ -13,10 +13,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `CorpusLoader` and `CorpusQualityReport` support classes for fixture validation and quality metrics
 - `tests/TurkishCorpusQualityTest.php` with aggregate FP/FN/coverage gate
 - `docs/dictionary-expansion-policy.md` — criteria for future Turkish dictionary entry PRs
+- Inline Turkish lexicon taxonomy in `docs/dictionary-expansion-policy.md` — four supported categories (`profanity`, `insult`, `sexual`, `abbreviation`), severity guidance, Batch 1 acceptance policy, corpus requirements, and maintainer curation workflow
 
 ### Changed
 
-- `CONTRIBUTING.md` — corpus authoring rules and dictionary expansion policy link
+- `docs/dictionary-expansion-policy.md` — expanded with v0.4 three-PR workflow, inline taxonomy, severity guidance, Batch 1 rules, maintainer review stages, and explicit slur out-of-scope note
+- `docs/specification.md` — supported dictionary categories documented with link to expansion policy
+- `CONTRIBUTING.md` — v0.4 three-PR lexicon expansion workflow, offensive language contribution expectations, maintainer review requirements, and corpus-first workflow
 
 ## [0.2.0] - 2026-07-03
 
