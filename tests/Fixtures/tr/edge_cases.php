@@ -82,4 +82,18 @@ return [
         ],
         'tags' => ['turkish-chars'],
     ],
+    [
+        'id' => 'edge.yarrak.yarak-gap',
+        'text' => 'yarak',
+        'expect' => ['detected' => false],
+        'tags' => ['spelling-variant', 'yarrak-gap'],
+        'note' => 'yarak normalizes to yarak, distinct from yarrak row — documented detection gap',
+    ],
+    [
+        'id' => 'edge.yarrak.yrk-gap',
+        'text' => 'yrk',
+        'expect' => ['detected' => false],
+        'tags' => ['truncation', 'yarrak-gap'],
+        'note' => 'yrk truncation remains undetected without a separate row',
+    ],
 ];

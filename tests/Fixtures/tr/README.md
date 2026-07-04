@@ -1,6 +1,6 @@
 # Turkish Quality Corpus
 
-Test-only fixture corpus for measuring Turkish dictionary quality against the seed dictionary in `data/tr.php`.
+Test-only fixture corpus for measuring Turkish dictionary quality against the dictionary in `data/tr.php`.
 
 ## Files
 
@@ -33,7 +33,7 @@ Test-only fixture corpus for measuring Turkish dictionary quality against the se
 
 ### Optional fields
 
-- `expect.terms` — expected canonical dictionary terms (seed terms only)
+- `expect.terms` — expected canonical dictionary terms present in `data/tr.php`
 - `expect.match_count` — expected number of matches
 - `expect.severity` — expected highest severity
 - `expect.categories` — expected match categories
@@ -44,7 +44,7 @@ Test-only fixture corpus for measuring Turkish dictionary quality against the se
 ## Rules
 
 - Empty `text` is allowed **only** in `edge_cases.php`.
-- `expect.terms` must reference seed terms: `amk`, `aq`, `siktir`, `orospu`, `mal`.
+- `expect.terms` must reference terms present in `data/tr.php`.
 - IDs must be unique across all fixture files.
 
 ## Quality gate
